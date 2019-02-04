@@ -1,0 +1,59 @@
+
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "eslint:recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "forOf": true,
+      "spread": true,
+      "classes": true,
+      "generators": true,
+      "destructuring": true,
+      "defaultParams": true,
+      "arrowFunctions": true,
+      "templateStrings": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "plugins": [
+    "babel"
+  ],
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "globals": {
+    "document": false
+  },
+  "rules": {
+    "strict": 2,
+    "arrow-spacing":"warn",
+    "arrow-body-style":"off",
+    "new-cap": 1,
+    "semi": [
+      1,
+      "never"
+    ],
+    "space-before-function-paren": 1,
+    "eqeqeq": "warn",
+    "block-scoped-var": "warn",
+    "no-return-await": "warn",
+    "no-unused-expressions": "warn",
+    "no-unused-vars": "warn",
+    "no-console":"error",
+    "no-extra-boolean-cast": "warn",
+    "no-dupe-keys": "error",
+    "no-dupe-args": "error",
+    "no-extra-bind": "error",
+    "no-extra-semi": "error",
+    "no-unreachable": "error",
+    "no-duplicate-case": "error",
+    "no-invalid-regexp": "error",
+    "no-case-declarations": "off",
+    "prefer-template": "warn"
+  }
+}
