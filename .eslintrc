@@ -1,4 +1,3 @@
-
 {
   "parser": "babel-eslint",
   "extends": [
@@ -31,20 +30,20 @@
   },
   "rules": {
     "strict": 2,
-    "arrow-spacing":"warn",
-    "arrow-body-style":"off",
+    "arrow-spacing": "warn",
+    "arrow-body-style": "off",
     "new-cap": 1,
     "semi": [
       1,
       "never"
     ],
-    "space-before-function-paren": 1,
+    "space-before-function-paren": 0,
     "eqeqeq": "warn",
     "block-scoped-var": "warn",
     "no-return-await": "warn",
     "no-unused-expressions": "warn",
     "no-unused-vars": "warn",
-    "no-console":"error",
+    "no-console": "error",
     "no-extra-boolean-cast": "warn",
     "no-dupe-keys": "error",
     "no-dupe-args": "error",

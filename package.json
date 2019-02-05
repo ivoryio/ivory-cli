@@ -1,11 +1,14 @@
 {
-  "name": "ivory-cli",
-  "version": "1.0.0",
+  "name": "@ivoryio/ivory-cli",
+  "version": "0.1.1",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "ivory": "bin/ivory-cli.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "node_modules/.bin/eslint src/**"
+    "lint": "node_modules/.bin/eslint lib/** bin/**"
   },
   "repository": {
     "type": "git",
@@ -17,7 +20,12 @@
     "url": "https://github.com/ivoryio/ivory-cli/issues"
   },
   "homepage": "https://github.com/ivoryio/ivory-cli#readme",
-  "dependencies": {},
+  "dependencies": {
+    "commander": "^2.19.0",
+    "inquirer": "^6.2.2",
+    "javascript-state-machine": "^3.1.0",
+    "rxjs": "^6.4.0"
+  },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "eslint": "^5.9.0",
