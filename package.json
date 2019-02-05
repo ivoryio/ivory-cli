@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/ivoryio/ivory-cli#readme",
   "dependencies": {
+    "aws-sdk": "^2.396.0",
+    "cli-color": "^1.4.0",
     "commander": "^2.19.0",
     "inquirer": "^6.2.2",
     "javascript-state-machine": "^3.1.0",
