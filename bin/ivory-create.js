@@ -1,7 +1,7 @@
 const program = require('commander')
 
 const pkg = require('../package.json')
-const create = require('../lib/commands/create.js')
+const create = require('../lib/commands/create/')
 
 program
   .version(pkg.version)
