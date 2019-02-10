@@ -28,7 +28,8 @@
     "javascript-state-machine": "^3.1.0",
     "ora": "^3.0.0",
     "rxjs": "^6.4.0",
-    "shelljs": "^0.8.3"
+    "shelljs": "^0.8.3",
+    "shortid": "^2.2.14"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
