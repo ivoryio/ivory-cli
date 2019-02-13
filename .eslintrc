@@ -26,7 +26,8 @@
     "es6": true
   },
   "globals": {
-    "document": false
+    "document": false,
+    "window": false
   },
   "rules": {
     "strict": 2,
