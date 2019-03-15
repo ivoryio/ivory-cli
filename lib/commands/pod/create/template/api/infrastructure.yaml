@@ -1,0 +1,58 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: AWS resources for the POD_NAME microservice
+
+Parameters:
+  StageName:
+    Type: String
+    Description: "API's stage name"
+    Default: "dev"
+
+  UserPoolARN:
+    Type: String
+    Description: The ARN of the user pool that provides authentication
+    Default: "dev"
+
+Resources:
+  POD_NAMEApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: !Ref StageName
+      Cors: "'*'"
+      Auth:
+        DefaultAuthorizer: CognitoAuthorizer
+        Authorizers:
+          CognitoAuthorizer:
+            UserPoolArn: !Ref UserPoolARN
+            IdentitySource: "method.request.header.Authorization"
+
+  POD_NAMEApiController:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/apiController.handler
+      MemorySize: 1024
+      Timeout: 60
+      Runtime: nodejs8.10
+      Environment:
+        Variables:
+          REGION: !Sub ${AWS::Region}
+      Events:
+        ProxyGet:
+          Type: Api
+          Properties:
+            RestApiId: !Ref POD_NAMEApi
+            Path: /{proxy+}
+            Method: GET
+        ProxyOptions:
+          Type: Api
+          Properties:
+            RestApiId: !Ref POD_NAMEApi
+            Path: /{proxy+}
+            Method: OPTIONS
+            Auth:
+              Authorizer: NONE
+
+Outputs:
+  ApiUrl:
+    Description: Gateway API URL
+    Value: !Sub https://${POD_NAMEApi}.execute-api.${AWS::Region}.amazonaws.com/${StageName}/
