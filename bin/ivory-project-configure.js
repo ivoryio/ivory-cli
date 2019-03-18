@@ -1,9 +1,9 @@
 const program = require('commander')
 
 const pkg = require('../package.json')
-const deploy = require('../lib/commands/project/deploy')
+const configure = require('../lib/commands/project/configure')
 
 program
   .version(pkg.version)
-  .action(() => deploy())
+  .action(() => configure())
   .parse(process.argv)
