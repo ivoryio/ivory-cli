@@ -1,12 +1,13 @@
 {
   "name": "@ivoryio/ivory-cli",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "",
   "main": "index.js",
   "bin": {
     "ivory": "bin/ivory-cli.js"
   },
   "scripts": {
+    "publish:cli": "npm publish --access public",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "node_modules/.bin/eslint lib/** bin/**"
   },
