@@ -9,3 +9,6 @@ To create a SPA web application with IPA you can use the CLI to:
 2. Configure the project by running the command: **ivory configure**
 3. Deploy the entire project or individual microservices by running the command: **ivory deploy**
 4. Create a new pod by running the command: **ivory create**
+
+# Prerequisites
+In order to use the Ivory CLI you need: [Node.js](https://nodejs.org/en/) and [AWS CLI](https://aws.amazon.com/cli/)
