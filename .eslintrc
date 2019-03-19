@@ -71,6 +71,7 @@
       "error",
       {
         "allow": [
+          "info",
           "warn",
           "error"
         ]
