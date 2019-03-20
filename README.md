@@ -21,7 +21,7 @@ npm i -g @ivoryio/ivory-cli
 
 ## Known issues or limitations
 
-Project name must satisfy the folloeing regular expression: (\w+) 
-Please don't use `sudo` with `npm`
+1. Project name must satisfy the folloeing regular expression: (\w+) 
+2. Please don't use `sudo` with `npm`
 
 
