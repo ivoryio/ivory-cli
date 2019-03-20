@@ -15,5 +15,7 @@ In order to use the Ivory CLI you need: [Node.js](https://nodejs.org/en/) and th
 
 ## Installation
 
+```javascript
 npm i -g @ivoryio/ivory-cli
+```
 
