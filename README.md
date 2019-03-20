@@ -19,3 +19,9 @@ In order to use the Ivory CLI you need: [Node.js](https://nodejs.org/en/) and th
 npm i -g @ivoryio/ivory-cli
 ```
 
+## Known issues or limitations
+
+Project name must satisfy the folloeing regular expression: (\w+) 
+Please don't use `sudo` with `npm`
+
+
