@@ -12,3 +12,8 @@ To create a SPA web application with IPA you can use the CLI to:
 
 ## Prerequisites
 In order to use the Ivory CLI you need: [Node.js](https://nodejs.org/en/) and the [AWS CLI](https://aws.amazon.com/cli/)
+
+## Installation
+
+npm i -g @ivoryio/ivory-cli
+
