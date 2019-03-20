@@ -23,6 +23,6 @@ npm i -g @ivoryio/ivory-cli
 
 1. Project name must satisfy the following regular expression: (\w+) 
 2. Please don't use `sudo` with `npm`
-3. At the moment you can't deploy the greeter microservice in the same AWS region because the greeter microservice creates an SNS topic called GreetingCreated which must be unique within the AWS region
+3. At the moment you can't deploy the `greeter microservice` in the same AWS region because the `greeter microservice` creates an SNS topic called `GreetingCreated` which must be unique within the AWS region
 
 
