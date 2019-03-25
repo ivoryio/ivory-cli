@@ -12,3 +12,17 @@ To create a SPA web application with IPA you can use the CLI to:
 
 ## Prerequisites
 In order to use the Ivory CLI you need: [Node.js](https://nodejs.org/en/) and the [AWS CLI](https://aws.amazon.com/cli/)
+
+## Installation
+
+```javascript
+npm i -g @ivoryio/ivory-cli
+```
+
+## Known issues or limitations
+
+1. Project name must satisfy the following regular expression: (\w+) 
+2. Please don't use `sudo` with `npm`
+3. At the moment you can't deploy the `greeter microservice` in the same AWS region because the `greeter microservice` creates an SNS topic called `GreetingCreated` which must be unique within the AWS region
+
+
