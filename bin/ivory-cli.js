@@ -10,4 +10,5 @@ program
   .command('configure', 'command to configure the project using the given AWS credentials')
   .command('deploy', 'command deploy the entire project or a pod microservice')
   .command('init', 'command to install all dependencies for an existing project')
+  .command('nuke', 'command to delete an Ivory pod or the infrastructure of a project')
   .parse(process.argv)
