@@ -29,7 +29,6 @@
     "javascript-state-machine": "^3.1.0",
     "joi": "^14.3.1",
     "ora": "^3.4.0",
-    "renamer": "^1.1.1",
     "rxjs": "^6.4.0",
     "shelljs": "^0.8.3"
   },
