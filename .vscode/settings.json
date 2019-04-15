@@ -1,6 +1,4 @@
 {
-  "standard.enable": true,
-  "standard.usePackageJson": true,
   "eslint.enable": true,
   "eslint.packageManager": "yarn",
   "javascript.validate.enable": false
