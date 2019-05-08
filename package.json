@@ -1,6 +1,6 @@
 {
   "name": "@ivoryio/ivory-cli",
-  "version": "0.11.4",
+  "version": "0.11.5",
   "description": "Ivory CLI",
   "main": "index.js",
   "bin": {
@@ -9,7 +9,7 @@
   "scripts": {
     "publish:cli": "yarn publish --access public",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "node_modules/.bin/eslint lib/** bin/**"
+    "lint": "eslint lib/** bin/**"
   },
   "repository": {
     "type": "git",
@@ -22,12 +22,12 @@
   },
   "homepage": "https://github.com/ivoryio/ivory-cli#readme",
   "dependencies": {
-    "aws-sdk": "^2.437.0",
+    "@hapi/joi": "^15.0.1",
+    "aws-sdk": "^2.451.0",
     "cli-color": "^1.4.0",
     "commander": "^2.20.0",
-    "inquirer": "^6.2.2",
+    "inquirer": "^6.3.1",
     "javascript-state-machine": "^3.1.0",
-    "joi": "^14.3.1",
     "ora": "^3.4.0",
     "rxjs": "^6.4.0",
     "shelljs": "^0.8.3"
@@ -35,22 +35,23 @@
   "devDependencies": {
     "aws-serverless-express": "^3.3.6",
     "babel-eslint": "^10.0.1",
-    "body-parser": "^1.18.3",
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "cz-conventional-changelog": "2.1.0",
     "eslint": "^5.15.3",
-    "eslint-config-react-app": "^3.0.8",
+    "eslint-config-react-app": "^4.0.0",
     "eslint-plugin-babel": "^5.3.0",
-    "eslint-plugin-flowtype": "^3.6.1",
-    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-flowtype": "^3.8.1",
+    "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-node": "^9.0.1",
     "eslint-plugin-promise": "^4.1.1",
-    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-react-hooks": "^1.6.0",
     "express": "^4.16.4",
-    "husky": "^1.3.1",
-    "jest": "^24.7.1",
-    "lint-staged": "^8.1.5"
+    "husky": "^2.2.0",
+    "jest": "^24.8.0",
+    "lint-staged": "^8.1.6"
   },
   "husky": {
     "hooks": {
