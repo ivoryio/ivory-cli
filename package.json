@@ -23,7 +23,7 @@
   "homepage": "https://github.com/ivoryio/ivory-cli#readme",
   "dependencies": {
     "@hapi/joi": "^15.0.2",
-    "aws-sdk": "^2.468.0",
+    "aws-sdk": "^2.469.0",
     "cli-color": "^1.4.0",
     "commander": "^2.20.0",
     "inquirer": "^6.3.1",
@@ -49,7 +49,7 @@
     "eslint-plugin-react": "^7.13.0",
     "eslint-plugin-react-hooks": "^1.6.0",
     "express": "^4.17.1",
-    "husky": "^2.2.0",
+    "husky": "^2.4.0",
     "jest": "^24.8.0",
     "lint-staged": "^8.1.6"
   },
