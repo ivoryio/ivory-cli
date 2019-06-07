@@ -23,7 +23,7 @@
   "homepage": "https://github.com/ivoryio/ivory-cli#readme",
   "dependencies": {
     "@hapi/joi": "^15.0.2",
-    "aws-sdk": "^2.470.0",
+    "aws-sdk": "^2.471.0",
     "cli-color": "^1.4.0",
     "commander": "^2.20.0",
     "inquirer": "^6.3.1",
