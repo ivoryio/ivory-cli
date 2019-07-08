@@ -1,6 +1,6 @@
 {
   "name": "@ivoryio/ivory-cli",
-  "version": "0.11.4",
+  "version": "0.12.0",
   "description": "Ivory CLI",
   "main": "index.js",
   "bin": {
