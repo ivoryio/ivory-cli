@@ -7,9 +7,10 @@ To create an Ivory App you can use the CLI to:
 
 1. Create a project by running the command: **ivory create**
 
-You can choose between 2 App types
+You can choose between 2 App types:
 
 a) Hello - which contains the basics for a SPA Web app (SignUp, SignIn & SignOut)
+
 b) Marketplace - which is work in progress and will contain the basics for a SPA Web Marketplace
 
 2. Deploy the app by running the command: **ivory deploy**
