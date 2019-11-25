@@ -1,5 +1,5 @@
 # ivory-cli
-Ivory CLI 🐘 is a tool for developing, testing and deploying Web SPAs (Single Page Applications) build with the Ivory Pod Architecture (IPA).
+Ivory CLI 🐘 is a tool for developing, testing and deploying Web SPAs (Single Page Applications) using the Ivory Pod Architecture (IPA).
 
 In a nutshell with IPA you create UI packages and microservices, and deploy them in the AWS cloud.
 
@@ -36,4 +36,4 @@ npm i -g @ivoryio/ivory-cli
 
 1. Project name must satisfy the following regular expression: (\w+) 
 2. Please don't use `sudo` with `npm`
-
+3. There is an issue with the Ivory Hello template which affects the CloudFront distibution and the app will not be available using the specified domain name.
