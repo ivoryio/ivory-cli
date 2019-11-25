@@ -1,17 +1,30 @@
 # ivory-cli
-Ivory CLI 🐘 is a tool for developing, testing and deploying SPA web applications build with the Ivory Pod Architecture (IPA).
+Ivory CLI 🐘 is a tool for developing, testing and deploying Web SPAs (Single Page Applications) build with the Ivory Pod Architecture (IPA).
 
-In a nutshell with IPA you create [micro-frontends](https://micro-frontends.org/) and [microservices](https://microservices.io/patterns/microservices.html), bundle them in a pod and deploy the pod in the AWS cloud.
+In a nutshell with IPA you create UI packages and microservices, and deploy them in the AWS cloud.
 
-To create a SPA web application with IPA you can use the CLI to:
+To create an Ivory App you can use the CLI to:
 
 1. Create a project by running the command: **ivory create**
-2. Configure the project by running the command: **ivory configure**
-3. Deploy the entire project or individual microservices by running the command: **ivory deploy**
-4. Create a new pod by running the command: **ivory create**
+You can choose between 2 App types
+a) Hello - which contains the basics for a SPA Web app (SignUp, SignIn & SignOut)
+b) Marketplace - which is work in progress and will contain the basics for a SPA Web Marketplace
+
+2. Deploy the app by running the command: **ivory deploy**
+The deploy command must be executed in an Ivory App root folder. The command will create the CI/CD pipelines and it will deploy the microservices and the Web SPA build files.
+
+The deploy command will take between 30-45 minutes to finish as it creates a global CloudFront distribution. 
 
 ## Prerequisites
-In order to use the Ivory CLI you need: [Node.js](https://nodejs.org/en/) and the [AWS CLI](https://aws.amazon.com/cli/)
+In order to use the Ivory CLI you need:
+1. [Node.js](https://nodejs.org/en/)
+2. Git
+3. [AWS CLI](https://aws.amazon.com/cli/)
+
+You will also need to configure AWS on your local machine:
+
+1. [Configuring the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
+2. [Setting Up for AWS CodeCommit](https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html)
 
 ## Installation
 
@@ -23,6 +36,4 @@ npm i -g @ivoryio/ivory-cli
 
 1. Project name must satisfy the following regular expression: (\w+) 
 2. Please don't use `sudo` with `npm`
-3. At the moment you can't deploy the `greeter microservice` in the same AWS region because the `greeter microservice` creates an SNS topic called `GreetingCreated` which must be unique within the AWS region
-
 
