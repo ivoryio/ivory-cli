@@ -6,11 +6,14 @@ In a nutshell with IPA you create UI packages and microservices, and deploy them
 To create an Ivory App you can use the CLI to:
 
 1. Create a project by running the command: **ivory create**
+
 You can choose between 2 App types
+
 a) Hello - which contains the basics for a SPA Web app (SignUp, SignIn & SignOut)
 b) Marketplace - which is work in progress and will contain the basics for a SPA Web Marketplace
 
 2. Deploy the app by running the command: **ivory deploy**
+
 The deploy command must be executed in an Ivory App root folder. The command will create the CI/CD pipelines and it will deploy the microservices and the Web SPA build files.
 
 The deploy command will take between 30-45 minutes to finish as it creates a global CloudFront distribution. 
