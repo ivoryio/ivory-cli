@@ -27,13 +27,11 @@ async function inquireAwsProfile() {
   const REFRESH_OPTION = "refresh";
   const prompt = inquirer.createPromptModule();
   const profiles = await getAWSProfiles();
-  let options = [
-    {
-      name: "I've updated my aws config (or credentials) file. Refresh options",
-      value: REFRESH_OPTION,
-    },
-    ...choices(profiles),
-  ];
+  let options = choices(profiles);
+  options.push({
+    name: "I've updated my aws config (or credentials) file. Refresh options",
+    value: REFRESH_OPTION,
+  });
   const answer = await prompt([
     {
       type: "list",
@@ -47,6 +45,8 @@ async function inquireAwsProfile() {
   if (answer === REFRESH_OPTION) {
     return inquireAwsProfile();
   }
+
+  return answer;
 
   function choices(profiles) {
     let choices = [];
