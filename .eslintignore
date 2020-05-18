@@ -1,4 +1,6 @@
 docs/
-build/
+bin/
 node_modules/
 scripts/
+tests/
+lib/
