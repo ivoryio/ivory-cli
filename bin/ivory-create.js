@@ -1,5 +1,11 @@
 #!/usr/bin/env node
-const pkg = require("../package.json");
-const { create } = require("../lib/commands");
+const program = require('commander')
+const pkg = require('../package.json')
+const { create } = require('../lib/commands')
 
-create(pkg.version);
+main()
+
+async function main() {
+  program.version(pkg.version).action(create)
+  await program.parseAsync(process.argv)
+}

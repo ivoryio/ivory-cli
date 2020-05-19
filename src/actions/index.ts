@@ -1,2 +1,5 @@
+export { configureApp } from './configureApp'
+export { createReactApp } from './createReactApp'
+export { inquireAwsProfile } from './inquireAwsProfile'
 export { inquireProjectName } from './inquireProjectName'
-export { inquireGitPlatform } from './inquireGitPlatform'
+export { inquireRepositoryInfo } from './inquireGitPlatform'

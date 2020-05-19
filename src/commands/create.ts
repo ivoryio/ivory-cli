@@ -2,29 +2,13 @@ export const create = ({
   configureApp,
   createReactApp,
   inquireAwsProfile,
-  inquireGitPlatform,
+  inquireRepositoryInfo,
   inquireProjectName,
 }: CreateCommandActions) => async () => {
   const projectName = await inquireProjectName()
   const awsProfile = await inquireAwsProfile()
-  const gitPlatform = await inquireGitPlatform()
+  const repositoryInfo = await inquireRepositoryInfo()
+
   createReactApp(projectName)
-  configureApp({ projectName, awsProfile, gitPlatform })
+  configureApp({ projectName, awsProfile, repositoryInfo })
 }
-
-interface CreateCommandActions {
-  configureApp: (config: AppConfiguration) => Promise<string>
-  createReactApp: (projectName: string) => Promise<string>
-  inquireAwsProfile: () => Promise<string>
-  inquireGitPlatform: () => Promise<GitPlatform>
-  inquireProjectName: () => Promise<string>
-}
-
-interface AppConfiguration {
-  projectName: string
-  awsProfile: string
-  gitPlatform: GitPlatform
-}
-
-type GitPlatform = 'codecommit' | 'github' | 'other'
-

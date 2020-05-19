@@ -6,7 +6,7 @@ const actions = {
   createReactApp: () => {},
   inquireAwsProfile: () => {},
   inquireProjectName: () => {},
-  inquireGitPlatform: () => {},
+  inquireRepositoryInfo: () => {},
 }
 describe('create command', () => {
   it('calls inquireProjectName', async () => {
@@ -29,12 +29,12 @@ describe('create command', () => {
     assert.ok(called)
   })
 
-  it('calls inquireGitPlatform', async () => {
+  it('calls inquireRepositoryInfo', async () => {
     let called = false
     const fakeAction = () => {
       called = true
     }
-    await create({ ...actions, inquireGitPlatform: fakeAction })()
+    await create({ ...actions, inquireRepositoryInfo: fakeAction })()
 
     assert.ok(called)
   })
@@ -78,7 +78,7 @@ describe('create command', () => {
         hasInquiredProjectName = true
         return Promise.resolve('project')
       },
-      inquireGitPlatform: async () => {
+      inquireRepositoryInfo: async () => {
         hasInquiredGitPlatform = true
         return Promise.resolve('git')
       },
@@ -120,7 +120,7 @@ describe('create command', () => {
     const expected = {
       awsProfile: 'ivory',
       projectName: 'ivory-test',
-      gitPlatform: 'codecommit',
+      repositoryInfo: { platform: 'codecommit' },
     }
     await create({
       configureApp: params => {
@@ -129,11 +129,11 @@ describe('create command', () => {
       createReactApp: () => Promise.resolve(''),
       inquireAwsProfile: () => Promise.resolve(expected.awsProfile),
       inquireProjectName: () => Promise.resolve(expected.projectName),
-      inquireGitPlatform: () => Promise.resolve(expected.gitPlatform),
+      inquireRepositoryInfo: () => Promise.resolve(expected.repositoryInfo),
     })()
 
-    assert.equal(actual.projectName, expected.projectName)
-    assert.equal(actual.gitPlatform, expected.gitPlatform)
     assert.equal(actual.awsProfile, expected.awsProfile)
+    assert.equal(actual.projectName, expected.projectName)
+    assert.equal(actual.repositoryInfo, expected.repositoryInfo)
   })
 })

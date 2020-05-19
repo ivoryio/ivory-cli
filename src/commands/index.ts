@@ -1,19 +1,16 @@
-import inquirer from 'inquirer'
-
 import { create as buildCreateCommand } from './create'
 import {
-  inquireProjectName as buildInquireProjectNameAction,
-  inquireGitPlatform as buildInquireGitPlatformAction,
+  inquireProjectName,
+  inquireRepositoryInfo,
+  inquireAwsProfile,
+  configureApp,
+  createReactApp,
 } from '../actions'
 
-const prompt = inquirer.createPromptModule()
-const inquireProjectName = buildInquireProjectNameAction(prompt)
-const inquireGitPlatform = buildInquireGitPlatformAction(prompt)
-
 export const create = buildCreateCommand({
+  configureApp,
+  createReactApp,
+  inquireAwsProfile,
   inquireProjectName,
-  inquireGitPlatform,
-  configureApp: () => Promise.resolve(''),
-  createReactApp: () => Promise.resolve(''),
-  inquireAwsProfile: () => Promise.resolve(''),
+  inquireRepositoryInfo,
 })
