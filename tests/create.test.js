@@ -4,9 +4,11 @@ const { create } = require('../lib/commands/create/command')
 const actions = {
   configureApp: () => {},
   createReactApp: () => {},
-  configureAWSsdkEnv: () => {},
   inquireAwsProfile: () => {},
   inquireProjectName: () => {},
+  configureAWSsdkEnv: () => {},
+  retrieveAmplifyAppId: () => {},
+  deployInfrastructure: () => {},
   inquireRepositoryInfo: () => {},
 }
 describe('create command', () => {
@@ -46,6 +48,47 @@ describe('create command', () => {
       called = true
     }
     await create({ ...actions, configureAWSsdkEnv: fakeAction })()
+
+    assert.ok(called)
+  })
+
+  it('calls retrieveAmplifyAppId', async () => {
+    let called = false
+    const fakeAction = () => {
+      called = true
+    }
+    await create({ ...actions, retrieveAmplifyAppId: fakeAction })()
+
+    assert.ok(called)
+  })
+
+  it('calls retrieveAmplifyAppId after configureAWSsdkEnv', async () => {
+    let hasconfigureAWSsdkEnv
+    let hasInquiredInOrder
+    await create({
+      configureApp: () => {},
+      createReactApp: () => {},
+      inquireAwsProfile: () => {},
+      inquireProjectName: () => {},
+      deployInfrastructure: () => {},
+      inquireRepositoryInfo: () => {},
+      configureAWSsdkEnv: () => {
+        hasconfigureAWSsdkEnv = true
+      },
+      retrieveAmplifyAppId: () => {
+        hasInquiredInOrder = hasconfigureAWSsdkEnv
+      },
+    })()
+
+    assert.ok(hasInquiredInOrder)
+  })
+
+  it('calls deployInfrastructure', async () => {
+    let called = false
+    const fakeAction = () => {
+      called = true
+    }
+    await create({ ...actions, deployInfrastructure: fakeAction })()
 
     assert.ok(called)
   })
@@ -94,6 +137,8 @@ describe('create command', () => {
         return Promise.resolve('git')
       },
       configureAWSsdkEnv: _ => {},
+      retrieveAmplifyAppId: () => {},
+      deployInfrastructure: () => {},
     })()
 
     assert.ok(hasInquiredInOrder)
@@ -139,6 +184,8 @@ describe('create command', () => {
         actual = params
       },
       configureAWSsdkEnv: _ => {},
+      retrieveAmplifyAppId: () => {},
+      deployInfrastructure: () => {},
       createReactApp: () => Promise.resolve(''),
       inquireAwsProfile: () => Promise.resolve(expected.awsProfile),
       inquireProjectName: () => Promise.resolve(expected.projectName),

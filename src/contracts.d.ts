@@ -20,4 +20,6 @@ interface CreateCommandActions {
   configureAWSsdkEnv: (awsProfile: string) => void
   configureApp: (config: AppConfiguration) => void
   inquireRepositoryInfo: () => Promise<RepositoryInfo>
+  retrieveAmplifyAppId: () => Promise<string | undefined>
+  deployInfrastructure: (config: AppConfiguration) => void
 }
