@@ -17,6 +17,7 @@ interface CreateCommandActions {
   inquireAwsProfile: () => Promise<string>
   inquireProjectName: () => Promise<string>
   createReactApp: (projectName: string) => void
+  configureAWSsdkEnv: (awsProfile: string) => void
   configureApp: (config: AppConfiguration) => void
   inquireRepositoryInfo: () => Promise<RepositoryInfo>
 }

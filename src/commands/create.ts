@@ -4,6 +4,7 @@ export const create = ({
   inquireAwsProfile,
   inquireRepositoryInfo,
   inquireProjectName,
+  configureAWSsdkEnv,
 }: CreateCommandActions) => async () => {
   const projectName = await inquireProjectName()
   const awsProfile = await inquireAwsProfile()
@@ -11,4 +12,6 @@ export const create = ({
 
   createReactApp(projectName)
   configureApp({ projectName, awsProfile, repositoryInfo })
+
+  configureAWSsdkEnv(awsProfile)
 }

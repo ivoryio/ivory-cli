@@ -4,6 +4,7 @@ const { create } = require('../lib/commands/create')
 const actions = {
   configureApp: () => {},
   createReactApp: () => {},
+  configureAWSsdkEnv: () => {},
   inquireAwsProfile: () => {},
   inquireProjectName: () => {},
   inquireRepositoryInfo: () => {},
@@ -35,6 +36,16 @@ describe('create command', () => {
       called = true
     }
     await create({ ...actions, inquireRepositoryInfo: fakeAction })()
+
+    assert.ok(called)
+  })
+
+  it('calls configureAWSsdkEnv', async () => {
+    let called = false
+    const fakeAction = () => {
+      called = true
+    }
+    await create({ ...actions, configureAWSsdkEnv: fakeAction })()
 
     assert.ok(called)
   })
@@ -82,6 +93,7 @@ describe('create command', () => {
         hasInquiredGitPlatform = true
         return Promise.resolve('git')
       },
+      configureAWSsdkEnv: _ => {},
     })()
 
     assert.ok(hasInquiredInOrder)
@@ -126,6 +138,7 @@ describe('create command', () => {
       configureApp: params => {
         actual = params
       },
+      configureAWSsdkEnv: _ => {},
       createReactApp: () => Promise.resolve(''),
       inquireAwsProfile: () => Promise.resolve(expected.awsProfile),
       inquireProjectName: () => Promise.resolve(expected.projectName),

@@ -1,10 +1,7 @@
 import AWS from 'aws-sdk'
 
-export const retrieveAmplifyAppId = async ({ awsProfile }: AppConfiguration) => {
-  process.env.AWS_PROFILE = awsProfile
-
-  // should get region from AppConfiguration and inquire the region from the user
-  const cf = new AWS.CloudFormation({ region: 'eu-central-1' })
+export const retrieveAmplifyAppId = async () => {
+  const cf = new AWS.CloudFormation({ region: AWS.config.region })
 
   const response = await cf.listExports().promise()
 
