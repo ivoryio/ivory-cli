@@ -8,7 +8,7 @@
   },
   "scripts": {
     "publish": "npm publish --access public",
-    "test": "mocha tests/*",
+    "test": "yarn tsc && mocha tests/*",
     "lint": "eslint './src/**/*.{ts,tsx}'"
   },
   "repository": {
