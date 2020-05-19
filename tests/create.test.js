@@ -1,5 +1,5 @@
 const assert = require('assert')
-const { create } = require('../lib/commands/create')
+const { create } = require('../lib/commands/create/command')
 
 const actions = {
   configureApp: () => {},

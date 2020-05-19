@@ -1,4 +1,4 @@
-import { create as buildCreateCommand } from './create'
+import { create as buildCreateCommand } from './command'
 import {
   inquireProjectName,
   inquireRepositoryInfo,
@@ -6,7 +6,7 @@ import {
   configureApp,
   createReactApp,
   configureAWSsdkEnv,
-} from '../actions'
+} from './actions'
 
 export const create = buildCreateCommand({
   configureApp,
