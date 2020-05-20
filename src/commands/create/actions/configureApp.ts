@@ -25,4 +25,5 @@ export const configureApp = ({ projectName, awsProfile, repositoryInfo }: AppCon
   shell.sed('-i', 'AWS_PROFILE', awsProfile, `infrastructure/package.json`)
 
   shell.exec(`cd infrastructure && yarn install --color always`)
+  shell.exec(`yarn i18n`)
 }
