@@ -1,2 +1,2 @@
-export { configureAWSsdkEnv } from './configureAWSsdkEnv'
-export { retrieveAmplifyAppId } from './retrieveAmplifyAppId'
+export { configureAWSsdkEnv } from './__configureAWSsdkEnv'
+export { retrieveAmplifyAppId } from './__retrieveAmplifyAppId'
