@@ -8,12 +8,14 @@ interface RepositoryInfo {
 }
 
 interface AppConfiguration {
-  projectName: string
   awsProfile: string
+  projectName: string
+  amplifyAppId?: string
   repositoryInfo: RepositoryInfo
 }
 
 interface CreateCommandActions {
+  initAmplify: (config: AppConfiguration) => void
   inquireAwsProfile: () => Promise<string>
   inquireProjectName: () => Promise<string>
   createReactApp: (projectName: string) => void

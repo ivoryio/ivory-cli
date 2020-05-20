@@ -2,6 +2,7 @@ const assert = require('assert')
 const { create } = require('../lib/commands/create/command')
 
 const actions = {
+  initAmplify: () => {},
   configureApp: () => {},
   createReactApp: () => {},
   inquireAwsProfile: () => {},
@@ -62,10 +63,21 @@ describe('create command', () => {
     assert.ok(called)
   })
 
+  it('calls initAmplify', async () => {
+    let called = false
+    const fakeAction = () => {
+      called = true
+    }
+    await create({ ...actions, initAmplify: fakeAction })()
+
+    assert.ok(called)
+  })
+
   it('calls retrieveAmplifyAppId after configureAWSsdkEnv', async () => {
     let hasconfigureAWSsdkEnv
     let hasInquiredInOrder
     await create({
+      initAmplify: () => {},
       configureApp: () => {},
       createReactApp: () => {},
       inquireAwsProfile: () => {},
@@ -136,6 +148,7 @@ describe('create command', () => {
         hasInquiredGitPlatform = true
         return Promise.resolve('git')
       },
+      initAmplify: () => {},
       configureAWSsdkEnv: _ => {},
       retrieveAmplifyAppId: () => {},
       deployInfrastructure: () => {},
@@ -183,6 +196,7 @@ describe('create command', () => {
       configureApp: params => {
         actual = params
       },
+      initAmplify: () => {},
       configureAWSsdkEnv: _ => {},
       retrieveAmplifyAppId: () => {},
       deployInfrastructure: () => {},

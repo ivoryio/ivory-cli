@@ -1,4 +1,5 @@
 export const create = ({
+  initAmplify,
   configureApp,
   createReactApp,
   inquireAwsProfile,
@@ -18,4 +19,5 @@ export const create = ({
 
   configureAWSsdkEnv(awsProfile)
   const amplifyAppId = await retrieveAmplifyAppId()
+  initAmplify({ projectName, awsProfile, amplifyAppId, repositoryInfo })
 }

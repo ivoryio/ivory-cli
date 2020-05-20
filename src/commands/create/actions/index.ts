@@ -1,3 +1,4 @@
+export { initAmplify } from './initAmplify'
 export { configureApp } from './configureApp'
 export { createReactApp } from './createReactApp'
 export { inquireAwsProfile } from './inquireAwsProfile'
