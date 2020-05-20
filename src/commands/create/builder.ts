@@ -9,7 +9,7 @@ import {
 } from './actions'
 
 import { create as buildCreateCommand } from './command'
-import { configureAWSsdkEnv, retrieveAmplifyAppId } from 'actions/aws'
+import { configureAWSsdkEnv, retrieveAmplifyAppId } from '../../actions/aws'
 
 export const create = buildCreateCommand({
   initAmplify,
