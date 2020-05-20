@@ -15,12 +15,13 @@ interface AppConfiguration {
 }
 
 interface CreateCommandActions {
-  initAmplify: (config: AppConfiguration) => void
   inquireAwsProfile: () => Promise<string>
   inquireProjectName: () => Promise<string>
   createReactApp: (projectName: string) => void
-  configureAWSsdkEnv: (awsProfile: string) => void
+  initAmplify: (config: AppConfiguration) => void
   configureApp: (config: AppConfiguration) => void
+  configureAWSsdkEnv: (awsProfile: string) => void
+  gitCommitAll: (commitMessage: string) => Promise
   inquireRepositoryInfo: () => Promise<RepositoryInfo>
   retrieveAmplifyAppId: () => Promise<string | undefined>
   deployInfrastructure: (config: AppConfiguration) => void

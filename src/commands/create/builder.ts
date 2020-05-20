@@ -1,3 +1,4 @@
+import { gitCommitAll } from '../../actions/git'
 import { initAmplify } from '../../actions/amplify'
 import { create as buildCreateCommand } from './command'
 import { configureAWSsdkEnv, retrieveAmplifyAppId } from '../../actions/aws'
@@ -6,6 +7,7 @@ import { inquireAwsProfile, inquireProjectName, inquireRepositoryInfo } from '..
 
 export const create = buildCreateCommand({
   initAmplify,
+  gitCommitAll,
   configureApp,
   createReactApp,
   inquireAwsProfile,

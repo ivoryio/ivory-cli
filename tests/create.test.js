@@ -1,8 +1,9 @@
 const assert = require('assert')
 const { create } = require('../lib/commands/create/command')
 
-const actions = {
+const doNothingActions = {
   initAmplify: () => {},
+  gitCommitAll: () => {},
   configureApp: () => {},
   createReactApp: () => {},
   inquireAwsProfile: () => {},
@@ -12,13 +13,14 @@ const actions = {
   deployInfrastructure: () => {},
   inquireRepositoryInfo: () => {},
 }
+
 describe('create command', () => {
   it('calls inquireProjectName', async () => {
     let called = false
     const fakeAction = () => {
       called = true
     }
-    await create({ ...actions, inquireProjectName: fakeAction })()
+    await create({ ...doNothingActions, inquireProjectName: fakeAction })()
 
     assert.ok(called)
   })
@@ -28,7 +30,7 @@ describe('create command', () => {
     const fakeAction = () => {
       called = true
     }
-    await create({ ...actions, inquireAwsProfile: fakeAction })()
+    await create({ ...doNothingActions, inquireAwsProfile: fakeAction })()
 
     assert.ok(called)
   })
@@ -38,7 +40,7 @@ describe('create command', () => {
     const fakeAction = () => {
       called = true
     }
-    await create({ ...actions, inquireRepositoryInfo: fakeAction })()
+    await create({ ...doNothingActions, inquireRepositoryInfo: fakeAction })()
 
     assert.ok(called)
   })
@@ -48,7 +50,7 @@ describe('create command', () => {
     const fakeAction = () => {
       called = true
     }
-    await create({ ...actions, configureAWSsdkEnv: fakeAction })()
+    await create({ ...doNothingActions, configureAWSsdkEnv: fakeAction })()
 
     assert.ok(called)
   })
@@ -58,7 +60,7 @@ describe('create command', () => {
     const fakeAction = () => {
       called = true
     }
-    await create({ ...actions, retrieveAmplifyAppId: fakeAction })()
+    await create({ ...doNothingActions, retrieveAmplifyAppId: fakeAction })()
 
     assert.ok(called)
   })
@@ -68,7 +70,17 @@ describe('create command', () => {
     const fakeAction = () => {
       called = true
     }
-    await create({ ...actions, initAmplify: fakeAction })()
+    await create({ ...doNothingActions, initAmplify: fakeAction })()
+
+    assert.ok(called)
+  })
+
+  it('calls gitCommit', async () => {
+    let called = false
+    const fakeAction = () => {
+      called = true
+    }
+    await create({ ...doNothingActions, gitCommitAll: fakeAction })()
 
     assert.ok(called)
   })
@@ -77,13 +89,7 @@ describe('create command', () => {
     let hasconfigureAWSsdkEnv
     let hasInquiredInOrder
     await create({
-      initAmplify: () => {},
-      configureApp: () => {},
-      createReactApp: () => {},
-      inquireAwsProfile: () => {},
-      inquireProjectName: () => {},
-      deployInfrastructure: () => {},
-      inquireRepositoryInfo: () => {},
+      ...doNothingActions,
       configureAWSsdkEnv: () => {
         hasconfigureAWSsdkEnv = true
       },
@@ -100,7 +106,7 @@ describe('create command', () => {
     const fakeAction = () => {
       called = true
     }
-    await create({ ...actions, deployInfrastructure: fakeAction })()
+    await create({ ...doNothingActions, deployInfrastructure: fakeAction })()
 
     assert.ok(called)
   })
@@ -110,7 +116,7 @@ describe('create command', () => {
     const fakeAction = () => {
       called = true
     }
-    await create({ ...actions, createReactApp: fakeAction })()
+    await create({ ...doNothingActions, createReactApp: fakeAction })()
 
     assert.ok(called)
   })
@@ -120,7 +126,7 @@ describe('create command', () => {
     const fakeAction = () => {
       called = true
     }
-    await create({ ...actions, configureApp: fakeAction })()
+    await create({ ...doNothingActions, configureApp: fakeAction })()
 
     assert.ok(called)
   })
@@ -131,7 +137,7 @@ describe('create command', () => {
     let hasInquiredGitPlatform
     let hasInquiredInOrder
     await create({
-      configureApp: () => {},
+      ...doNothingActions,
       createReactApp: () => {
         hasInquiredInOrder =
           hasInquiredAwsProfile && hasInquiredProjectName && hasInquiredGitPlatform
@@ -148,10 +154,6 @@ describe('create command', () => {
         hasInquiredGitPlatform = true
         return Promise.resolve('git')
       },
-      initAmplify: () => {},
-      configureAWSsdkEnv: _ => {},
-      retrieveAmplifyAppId: () => {},
-      deployInfrastructure: () => {},
     })()
 
     assert.ok(hasInquiredInOrder)
@@ -161,7 +163,7 @@ describe('create command', () => {
     let hasCreatedReactApp
     let hasConfiguredAfterCreation
     await create({
-      ...actions,
+      ...doNothingActions,
       createReactApp: () => {
         hasCreatedReactApp = true
       },
@@ -176,7 +178,7 @@ describe('create command', () => {
     const expected = 'ivory-test'
     let actual = ''
     await create({
-      ...actions,
+      ...doNothingActions,
       inquireProjectName: async () => Promise.resolve(expected),
       createReactApp: projectName => {
         actual = projectName
@@ -193,14 +195,10 @@ describe('create command', () => {
       repositoryInfo: { platform: 'codecommit' },
     }
     await create({
+      ...doNothingActions,
       configureApp: params => {
         actual = params
       },
-      initAmplify: () => {},
-      configureAWSsdkEnv: _ => {},
-      retrieveAmplifyAppId: () => {},
-      deployInfrastructure: () => {},
-      createReactApp: () => Promise.resolve(''),
       inquireAwsProfile: () => Promise.resolve(expected.awsProfile),
       inquireProjectName: () => Promise.resolve(expected.projectName),
       inquireRepositoryInfo: () => Promise.resolve(expected.repositoryInfo),
