@@ -51,8 +51,3 @@ Here are the actual steps:
 3. Choose **AWS profile**
 4. Choose or specify where do you want your **repo** to be created
 5. Wait for the magic to finish. And you’ll have initial project structure, all stacks created, an repo created and all services deployed.
-
-**Mention**: **If Can’t find module ‘../lib/commands’** error appears, then do these steps:
-1. Go to ivory-cli project root folder
-2. Run **npm link** command
-3. Run again **ivory create** and it will work
