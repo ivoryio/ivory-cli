@@ -41,3 +41,13 @@ npm i -g @ivoryio/ivory-cli
 1. Project name must satisfy the following regular expression: (\w+) 
 2. Please don't use `sudo` with `npm`
 3. There is an issue with the Ivory Hello template which affects the CloudFront distibution and the app will not be available using the specified domain name.
+
+# Steps For Creating App Using Ivory CLI
+Before starting make sure that you have specified **region** and **output** as **json** in **config** file from **.aws** folder
+
+Here are the actual steps:
+1. Run **ivory create** command in CLI in the folder where you want the project to be created
+2. Specify **name** for the project
+3. Choose **AWS profile**
+4. Choose or specify where do you want your **repo** to be created
+5. Wait for the magic to finish. And you’ll have initial project structure, all stacks created, an repo created and all services deployed.
