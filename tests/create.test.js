@@ -2,16 +2,19 @@ const assert = require('assert')
 const { create } = require('../lib/commands/create/command')
 
 const doNothingActions = {
+  gitPush: () => {},
+  gitConfig: () => {},
   initAmplify: () => {},
   gitCommitAll: () => {},
   configureApp: () => {},
   createReactApp: () => {},
   inquireAwsProfile: () => {},
   inquireProjectName: () => {},
-  configureAWSsdkEnv: () => {},
+  configureAwsSdkEnv: () => {},
   retrieveAmplifyAppId: () => {},
   deployInfrastructure: () => {},
-  inquireRepositoryInfo: () => {},
+  retrieveRepositoryUrl: () => {},
+  inquireRepositoryInfo: () => ({}),
 }
 
 describe('create command', () => {
@@ -39,18 +42,19 @@ describe('create command', () => {
     let called = false
     const fakeAction = () => {
       called = true
+      return {}
     }
     await create({ ...doNothingActions, inquireRepositoryInfo: fakeAction })()
 
     assert.ok(called)
   })
 
-  it('calls configureAWSsdkEnv', async () => {
+  it('calls configureAwsSdkEnv', async () => {
     let called = false
     const fakeAction = () => {
       called = true
     }
-    await create({ ...doNothingActions, configureAWSsdkEnv: fakeAction })()
+    await create({ ...doNothingActions, configureAwsSdkEnv: fakeAction })()
 
     assert.ok(called)
   })
@@ -85,16 +89,16 @@ describe('create command', () => {
     assert.ok(called)
   })
 
-  it('calls retrieveAmplifyAppId after configureAWSsdkEnv', async () => {
-    let hasconfigureAWSsdkEnv
+  it('calls retrieveAmplifyAppId after configureAwsSdkEnv', async () => {
+    let hasconfigureAwsSdkEnv
     let hasInquiredInOrder
     await create({
       ...doNothingActions,
-      configureAWSsdkEnv: () => {
-        hasconfigureAWSsdkEnv = true
+      configureAwsSdkEnv: () => {
+        hasconfigureAwsSdkEnv = true
       },
       retrieveAmplifyAppId: () => {
-        hasInquiredInOrder = hasconfigureAWSsdkEnv
+        hasInquiredInOrder = hasconfigureAwsSdkEnv
       },
     })()
 
@@ -207,5 +211,95 @@ describe('create command', () => {
     assert.equal(actual.awsProfile, expected.awsProfile)
     assert.equal(actual.projectName, expected.projectName)
     assert.equal(actual.repositoryInfo, expected.repositoryInfo)
+  })
+
+  it('calls retrieveRepositoryUrl if platform is codecommit', async () => {
+    let called = false
+
+    const fakeAction = () => {
+      called = true
+    }
+    await create({
+      ...doNothingActions,
+      inquireRepositoryInfo: () => Promise.resolve({ platform: 'codecommit' }),
+      retrieveRepositoryUrl: fakeAction,
+    })()
+
+    assert.ok(called)
+  })
+
+  it('does not call retrieveRepositoryUrl if platform is not codecommit', async () => {
+    let called = false
+
+    const fakeAction = () => {
+      called = true
+    }
+    await create({
+      ...doNothingActions,
+      inquireRepositoryInfo: () => Promise.resolve({ platform: 'github' }),
+      retrieveRepositoryUrl: fakeAction,
+    })()
+
+    assert.equal(called, false)
+  })
+
+  it('calls gitConfig if platform is codecommit', async () => {
+    let called = false
+
+    const fakeAction = () => {
+      called = true
+    }
+    await create({
+      ...doNothingActions,
+      inquireRepositoryInfo: () => Promise.resolve({ platform: 'codecommit' }),
+      gitConfig: fakeAction,
+    })()
+
+    assert.ok(called)
+  })
+
+  it('does not call gitConfig if platform is not codecommit', async () => {
+    let called = false
+
+    const fakeAction = () => {
+      called = true
+    }
+    await create({
+      ...doNothingActions,
+      inquireRepositoryInfo: () => Promise.resolve({ platform: 'github' }),
+      gitConfig: fakeAction,
+    })()
+
+    assert.equal(called, false)
+  })
+
+  it('calls gitPush if platform is codecommit', async () => {
+    let called = false
+
+    const fakeAction = () => {
+      called = true
+    }
+    await create({
+      ...doNothingActions,
+      inquireRepositoryInfo: () => Promise.resolve({ platform: 'codecommit' }),
+      gitPush: fakeAction,
+    })()
+
+    assert.ok(called)
+  })
+
+  it('does not call gitPush if platform is not codecommit', async () => {
+    let called = false
+
+    const fakeAction = () => {
+      called = true
+    }
+    await create({
+      ...doNothingActions,
+      inquireRepositoryInfo: () => Promise.resolve({ platform: 'github' }),
+      gitPush: fakeAction,
+    })()
+
+    assert.equal(called, false)
   })
 })

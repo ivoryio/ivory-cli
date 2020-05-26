@@ -1,9 +1,8 @@
 import shell from 'shelljs'
 
-export const gitCommitAll = (commitMessage: string) => {
+export const gitPush = () => {
   return new Promise((resolve, reject) => {
-    shell.exec(`git add *`)
-    shell.exec(`git commit -m "${commitMessage}"`, (code, _, stderr) => {
+    shell.exec(`git push --set-upstream origin master`, (code, _, stderr) => {
       if (code !== 0) {
         reject(stderr)
       } else {

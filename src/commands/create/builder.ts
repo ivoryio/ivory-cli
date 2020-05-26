@@ -1,11 +1,13 @@
-import { gitCommitAll } from '../../actions/git'
 import { initAmplify } from '../../actions/amplify'
 import { create as buildCreateCommand } from './command'
-import { configureAwsSdkEnv, retrieveAmplifyAppId } from '../../actions/aws'
+import { gitPush, gitCommitAll, gitConfig } from '../../actions/git'
 import { configureApp, createReactApp, deployInfrastructure } from './actions'
+import { configureAwsSdkEnv, retrieveAmplifyAppId, retrieveRepositoryUrl } from '../../actions/aws'
 import { inquireAwsProfile, inquireProjectName, inquireRepositoryInfo } from '../../actions/inquire'
 
 export const create = buildCreateCommand({
+  gitPush,
+  gitConfig,
   initAmplify,
   gitCommitAll,
   configureApp,
@@ -15,5 +17,6 @@ export const create = buildCreateCommand({
   configureAwsSdkEnv,
   deployInfrastructure,
   retrieveAmplifyAppId,
+  retrieveRepositoryUrl,
   inquireRepositoryInfo,
 })

@@ -1,4 +1,8 @@
+import shell from 'shelljs'
+
 export const create = ({
+  gitPush,
+  gitConfig,
   initAmplify,
   gitCommitAll,
   configureApp,
@@ -9,6 +13,7 @@ export const create = ({
   retrieveAmplifyAppId,
   deployInfrastructure,
   inquireRepositoryInfo,
+  retrieveRepositoryUrl,
 }: CreateCommandActions) => async () => {
   const projectName = await inquireProjectName()
   const awsProfile = await inquireAwsProfile()
@@ -22,4 +27,12 @@ export const create = ({
   const amplifyAppId = await retrieveAmplifyAppId(projectName)
   initAmplify({ projectName, awsProfile, amplifyAppId, repositoryInfo })
   await gitCommitAll('[Ivory auto-commit] initilized AWS Amplify')
+
+  if (repositoryInfo.platform === 'codecommit') {
+    const repoUrl = await retrieveRepositoryUrl(projectName)
+    await gitConfig(projectName, repoUrl)
+    await gitPush()
+  }
+
+  // TODO show exit message
 }

@@ -15,6 +15,7 @@ interface AppConfiguration {
 }
 
 interface CreateCommandActions {
+  gitPush: () => Promise
   inquireAwsProfile: () => Promise<string>
   inquireProjectName: () => Promise<string>
   createReactApp: (projectName: string) => void
@@ -23,6 +24,8 @@ interface CreateCommandActions {
   configureAwsSdkEnv: (awsProfile: string) => void
   gitCommitAll: (commitMessage: string) => Promise
   inquireRepositoryInfo: () => Promise<RepositoryInfo>
-  retrieveAmplifyAppId: (projectName: string) => Promise<string | undefined>
   deployInfrastructure: (config: AppConfiguration) => void
+  gitConfig: (profileName: string, repoUrl: string) => Promise
+  retrieveRepositoryUrl: (projectName: string) => Promise<string>
+  retrieveAmplifyAppId: (projectName: string) => Promise<string | undefined>
 }
