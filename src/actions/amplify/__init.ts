@@ -1,11 +1,11 @@
 import shell from 'shelljs'
 
 export const initAmplify = ({ projectName, awsProfile, amplifyAppId }: AppConfiguration) => {
-  const AMPLIFY = `"{\\"projectName\\":\\"${projectName}\\",\\"envName\\":\\"dev\\",\\"defaultEditor\\":\\"code\\"}"`
+  const AMPLIFY = `"{\\"projectName\\":\\"${projectName}\\",\\"envName\\":\\"master\\",\\"defaultEditor\\":\\"code\\"}"`
 
   const AWS_CLOUD_FORMATION_CONFIG = `"{\\"configLevel\\":\\"project\\",\\"useProfile\\":true,\\"profileName\\":\\"${awsProfile}\\"}"`
 
-  const REACT_CONFIG = `"{\\"SourceDir\\":\\"src\\",\\"DistributionDir\\":\\"build\\",\\"BuildCommand\\":\\"npm run-script build\\",\\"StartCommand\\":\\"npm run-script start\\"}"`
+  const REACT_CONFIG = `"{\\"SourceDir\\":\\"src\\",\\"DistributionDir\\":\\"build\\",\\"BuildCommand\\":\\"yarn build\\",\\"StartCommand\\":\\"yarn start\\"}"`
 
   const FRONTEND = `"{\\"frontend\\":\\"javascript\\",\\"framework\\":\\"react\\",\\"config\\":${REACT_CONFIG}}"`
 

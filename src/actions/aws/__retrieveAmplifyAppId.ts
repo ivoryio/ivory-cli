@@ -1,9 +1,9 @@
 import AWS from 'aws-sdk'
 
-export const retrieveAmplifyAppId = async () => {
+export const retrieveAmplifyAppId = async (projectName: string) => {
   const cf = new AWS.CloudFormation({ region: AWS.config.region })
 
   const response = await cf.listExports().promise()
 
-  return response.Exports?.find(value => value.Name === 'amplify-app-id')?.Value
+  return response.Exports?.find(value => value.Name === `${projectName}-amplify-app-id`)?.Value
 }

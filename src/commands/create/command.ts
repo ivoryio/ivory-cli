@@ -5,7 +5,7 @@ export const create = ({
   createReactApp,
   inquireAwsProfile,
   inquireProjectName,
-  configureAWSsdkEnv,
+  configureAwsSdkEnv,
   retrieveAmplifyAppId,
   deployInfrastructure,
   inquireRepositoryInfo,
@@ -18,8 +18,8 @@ export const create = ({
   configureApp({ projectName, awsProfile, repositoryInfo })
   deployInfrastructure({ projectName, awsProfile, repositoryInfo })
 
-  configureAWSsdkEnv(awsProfile)
-  const amplifyAppId = await retrieveAmplifyAppId()
+  configureAwsSdkEnv(awsProfile)
+  const amplifyAppId = await retrieveAmplifyAppId(projectName)
   initAmplify({ projectName, awsProfile, amplifyAppId, repositoryInfo })
   await gitCommitAll('[Ivory auto-commit] initilized AWS Amplify')
 }
