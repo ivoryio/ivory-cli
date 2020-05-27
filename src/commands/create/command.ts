@@ -1,5 +1,3 @@
-import shell from 'shelljs'
-
 export const create = ({
   gitPush,
   gitConfig,
