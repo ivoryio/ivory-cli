@@ -30,7 +30,7 @@ export const create = ({
 
   if (repositoryInfo.platform === 'codecommit') {
     const repoUrl = await retrieveRepositoryUrl(projectName)
-    await gitConfig(projectName, repoUrl)
+    await gitConfig(awsProfile, repoUrl)
     await gitPush()
   }
 

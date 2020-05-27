@@ -3,7 +3,7 @@ import { CloudFormation, config } from 'aws-sdk'
 let cfExports: CloudFormation.Exports
 
 export const retrieveAmplifyAppId = async (projectName: string) => {
-  if (!cfExports.length) {
+  if (!cfExports) {
     await retrieveExports()
   }
 
@@ -11,7 +11,7 @@ export const retrieveAmplifyAppId = async (projectName: string) => {
 }
 
 export const retrieveRepositoryUrl = async (projectName: string) => {
-  if (!cfExports.length) {
+  if (!cfExports) {
     await retrieveExports()
   }
 

@@ -9,7 +9,8 @@
   "scripts": {
     "publish:beta": "yarn publish:npm --tag beta",
     "publish:npm": "yarn test && npm publish --access public",
-    "test": "yarn tsc && mocha tests/*",
+    "test": "yarn build && mocha tests/*",
+    "build": "rm -r ./lib && yarn tsc",
     "lint": "eslint './src/**/*.{ts,tsx}'"
   },
   "repository": {
