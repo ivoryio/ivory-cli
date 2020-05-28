@@ -2,6 +2,7 @@ export const create = ({
   gitPush,
   gitConfig,
   initAmplify,
+  amplifyPush,
   gitCommitAll,
   configureApp,
   createReactApp,
@@ -27,6 +28,7 @@ export const create = ({
   initAmplify({ projectName, awsProfile, amplifyAppId })
 
   await amplifyAddAuth()
+  amplifyPush()
 
   await gitCommitAll('[Ivory auto-commit] initilized AWS Amplify')
   if (repositoryInfo.platform === 'codecommit') {
@@ -34,6 +36,4 @@ export const create = ({
     await gitConfig(awsProfile, repoUrl)
     await gitPush()
   }
-
-  // TODO show exit message
 }

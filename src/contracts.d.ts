@@ -20,6 +20,7 @@ interface AmplifyInitParams {
 }
 
 interface CreateCommandActions {
+  amplifyPush: () => void
   gitPush: () => Promise<void>
   amplifyAddAuth: () => Promise<void>
   inquireAwsProfile: () => Promise<string>

@@ -5,6 +5,7 @@ const doNothingActions = {
   gitPush: () => {},
   gitConfig: () => {},
   initAmplify: () => {},
+  amplifyPush: () => {},
   gitCommitAll: () => {},
   configureApp: () => {},
   createReactApp: () => {},
@@ -86,6 +87,16 @@ describe('create command', () => {
       called = true
     }
     await create({ ...doNothingActions, amplifyAddAuth: fakeAction })()
+
+    assert.ok(called)
+  })
+
+  it('calls amplifyPush', async () => {
+    let called = false
+    const fakeAction = () => {
+      called = true
+    }
+    await create({ ...doNothingActions, amplifyPush: fakeAction })()
 
     assert.ok(called)
   })
