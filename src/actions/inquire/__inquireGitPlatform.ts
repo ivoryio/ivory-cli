@@ -1,6 +1,6 @@
 import inquirer from 'inquirer'
 
-export const inquireRepositoryInfo = async () => {
+export const inquireRepositoryInfo = async (): Promise<RepositoryInfo> => {
   const platform = await inquirer
     .prompt([
       {
@@ -11,7 +11,7 @@ export const inquireRepositoryInfo = async () => {
         default: 0,
       },
     ])
-    .then(r => r.gitPlatform)
+    .then(r => r.gitPlatform as GitPlatform)
 
   if (platform !== 'github') {
     return { platform }
@@ -26,10 +26,10 @@ export const inquireRepositoryInfo = async () => {
         default: true,
       },
     ])
-    .then(r => r.repoExists)
+    .then(r => r.repoExists as boolean)
 
   if (!repoExists) {
-    return { platform }
+    return { platform: 'other' }
   }
 
   const repo = await inquirer.prompt([

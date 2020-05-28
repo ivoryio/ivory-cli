@@ -24,7 +24,7 @@ export const inquireAwsProfile = async (): Promise<string> => {
         choices,
       },
     ])
-    .then(r => r.awsProfile)
+    .then(r => r.awsProfile as string)
 
   if (answer === REFRESH_OPTION) {
     return inquireAwsProfile()
