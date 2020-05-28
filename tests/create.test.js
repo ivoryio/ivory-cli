@@ -8,6 +8,7 @@ const doNothingActions = {
   gitCommitAll: () => {},
   configureApp: () => {},
   createReactApp: () => {},
+  amplifyAddAuth: () => {},
   inquireAwsProfile: () => {},
   inquireProjectName: () => {},
   configureAwsSdkEnv: () => {},
@@ -75,6 +76,16 @@ describe('create command', () => {
       called = true
     }
     await create({ ...doNothingActions, initAmplify: fakeAction })()
+
+    assert.ok(called)
+  })
+
+  it('calls amplifyAddAuth', async () => {
+    let called = false
+    const fakeAction = () => {
+      called = true
+    }
+    await create({ ...doNothingActions, amplifyAddAuth: fakeAction })()
 
     assert.ok(called)
   })

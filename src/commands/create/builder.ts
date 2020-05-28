@@ -1,4 +1,4 @@
-import { initAmplify } from '../../actions/amplify'
+import { initAmplify, amplifyAddAuth } from '../../actions/amplify'
 import { create as buildCreateCommand } from './command'
 import { gitPush, gitCommitAll, gitConfig } from '../../actions/git'
 import { configureApp, createReactApp, deployInfrastructure } from './actions'
@@ -12,6 +12,7 @@ export const create = buildCreateCommand({
   gitCommitAll,
   configureApp,
   createReactApp,
+  amplifyAddAuth,
   inquireAwsProfile,
   inquireProjectName,
   configureAwsSdkEnv,

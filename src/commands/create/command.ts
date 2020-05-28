@@ -5,6 +5,7 @@ export const create = ({
   gitCommitAll,
   configureApp,
   createReactApp,
+  amplifyAddAuth,
   inquireAwsProfile,
   inquireProjectName,
   configureAwsSdkEnv,
@@ -12,7 +13,7 @@ export const create = ({
   deployInfrastructure,
   inquireRepositoryInfo,
   retrieveRepositoryUrl,
-}: CreateCommandActions) => async () => {
+}: CreateCommandActions) => async (): Promise<void> => {
   const projectName = await inquireProjectName()
   const awsProfile = await inquireAwsProfile()
   const repositoryInfo = await inquireRepositoryInfo()
@@ -23,9 +24,11 @@ export const create = ({
 
   configureAwsSdkEnv(awsProfile)
   const amplifyAppId = await retrieveAmplifyAppId(projectName)
-  initAmplify({ projectName, awsProfile, amplifyAppId, repositoryInfo })
-  await gitCommitAll('[Ivory auto-commit] initilized AWS Amplify')
+  initAmplify({ projectName, awsProfile, amplifyAppId })
 
+  await amplifyAddAuth()
+
+  await gitCommitAll('[Ivory auto-commit] initilized AWS Amplify')
   if (repositoryInfo.platform === 'codecommit') {
     const repoUrl = await retrieveRepositoryUrl(projectName)
     await gitConfig(awsProfile, repoUrl)

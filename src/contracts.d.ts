@@ -10,16 +10,22 @@ interface RepositoryInfo {
 interface AppConfiguration {
   awsProfile: string
   projectName: string
-  amplifyAppId?: string
   repositoryInfo: RepositoryInfo
 }
 
+interface AmplifyInitParams {
+  projectName: string
+  amplifyAppId: string
+  awsProfile: string
+}
+
 interface CreateCommandActions {
-  gitPush: () => Promise
+  gitPush: () => Promise<void>
+  amplifyAddAuth: () => Promise<void>
   inquireAwsProfile: () => Promise<string>
   inquireProjectName: () => Promise<string>
   createReactApp: (projectName: string) => void
-  initAmplify: (config: AppConfiguration) => void
+  initAmplify: (config: AmplifyInitParams) => void
   configureApp: (config: AppConfiguration) => void
   configureAwsSdkEnv: (awsProfile: string) => void
   gitCommitAll: (commitMessage: string) => Promise
@@ -27,5 +33,5 @@ interface CreateCommandActions {
   deployInfrastructure: (config: AppConfiguration) => void
   gitConfig: (profileName: string, repoUrl: string) => Promise
   retrieveRepositoryUrl: (projectName: string) => Promise<string>
-  retrieveAmplifyAppId: (projectName: string) => Promise<string | undefined>
+  retrieveAmplifyAppId: (projectName: string) => Promise<string>
 }

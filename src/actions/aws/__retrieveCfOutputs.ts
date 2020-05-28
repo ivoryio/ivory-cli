@@ -2,15 +2,15 @@ import { CloudFormation, config } from 'aws-sdk'
 
 let cfExports: CloudFormation.Exports
 
-export const retrieveAmplifyAppId = async (projectName: string) => {
+export const retrieveAmplifyAppId = async (projectName: string): Promise<string> => {
   if (!cfExports) {
     await retrieveExports()
   }
 
-  return cfExports?.find(value => value.Name === `${projectName}-amplify-app-id`)?.Value
+  return cfExports?.find(value => value.Name === `${projectName}-amplify-app-id`)?.Value ?? 'not-found'
 }
 
-export const retrieveRepositoryUrl = async (projectName: string) => {
+export const retrieveRepositoryUrl = async (projectName: string): Promise<string> => {
   if (!cfExports) {
     await retrieveExports()
   }
