@@ -1,66 +1,51 @@
 {
   "name": "@ivoryio/ivory-cli",
-  "version": "0.13.1",
+  "version": "1.0.0",
   "description": "Ivory CLI",
   "main": "index.js",
   "bin": {
     "ivory": "bin/ivory-cli.js"
   },
   "scripts": {
-    "publish:cli": "npm publish --access public",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "node_modules/.bin/eslint lib/** bin/**"
+    "publish:beta": "yarn publish:npm --tag beta",
+    "publish:npm": "yarn test && npm publish --access public",
+    "test": "yarn build && mocha tests/*",
+    "build": "rm -r ./lib && yarn tsc",
+    "lint": "eslint './src/**/*.{ts,tsx}'"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ivoryio/ivory-cli.git"
   },
-  "author": "Bogdan Balan <bogdan.balan@thinslices.com>",
+  "author": "Thinslices <developers@thinslices.com>",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/ivoryio/ivory-cli/issues"
   },
   "homepage": "https://github.com/ivoryio/ivory-cli#readme",
   "dependencies": {
-    "aws-sdk": "^2.437.0",
-    "cli-color": "^1.4.0",
-    "commander": "^2.20.0",
-    "inquirer": "^6.2.2",
-    "joi": "^14.3.1",
-    "ora": "^3.4.0",
-    "rxjs": "^6.4.0",
-    "shelljs": "^0.8.3"
+    "aws-sdk": "^2.683.0",
+    "colors": "^1.4.0",
+    "commander": "^5.1.0",
+    "ini": "^1.3.5",
+    "inquirer": "^7.1.0",
+    "os": "^0.1.1",
+    "shelljs": "^0.8.4",
+    "typescript": "^3.9.2"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
-    "cz-conventional-changelog": "2.1.0",
-    "eslint": "^5.15.3",
-    "eslint-config-react-app": "^4.0.1",
-    "eslint-plugin-babel": "^5.3.0",
-    "eslint-plugin-flowtype": "^3.10.5",
-    "eslint-plugin-import": "^2.16.0",
-    "eslint-plugin-jsx-a11y": "^6.2.1",
-    "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-promise": "^4.1.1",
-    "eslint-plugin-react": "^7.13.0",
-    "eslint-plugin-react-hooks": "^1.6.0",
-    "husky": "^1.3.1",
-    "jest": "^24.7.1",
-    "lint-staged": "^8.1.5"
+    "@types/ini": "^1.3.30",
+    "@types/inquirer": "^6.5.0",
+    "@types/node": "^14.0.1",
+    "@types/shelljs": "^0.8.8",
+    "@typescript-eslint/eslint-plugin": "^3.0.1",
+    "@typescript-eslint/parser": "^3.0.1",
+    "eslint": "^7.1.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "mocha": "^7.1.2",
+    "prettier": "^2.0.5"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint --fix"
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+  "peerDependencies": {
+    "@aws-amplify/cli": "^4.20.0"
   }
 }

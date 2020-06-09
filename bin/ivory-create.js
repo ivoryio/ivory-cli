@@ -1,10 +1,11 @@
+#!/usr/bin/env node
 const program = require('commander')
-
 const pkg = require('../package.json')
-const create = require('../lib/commands/create')
+const { create } = require('../lib/commands/create/builder')
 
-program
-  .version(pkg.version)
-  .description('Create a new Ivory project or a new pod for an existing project')
-  .action(() => create())
-  .parse(process.argv)
+main()
+
+async function main() {
+  program.version(pkg.version).action(create)
+  await program.parseAsync(process.argv)
+}

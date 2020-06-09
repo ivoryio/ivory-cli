@@ -10,7 +10,7 @@
   "editor.codeLens": true,
   "editor.colorDecorators": true,
   "editor.cursorBlinking": "smooth",
-  "editor.matchBrackets": true,
+  "editor.matchBrackets": "always",
   "editor.quickSuggestions": {
     "other": true,
     "comments": false,
@@ -25,7 +25,7 @@
   "javascript.format.enable": true,
   "javascript.preferences.importModuleSpecifier": "non-relative",
   "javascript.preferences.quoteStyle": "single",
-  "javascript.preferences.renameShorthandProperties": true,
+  "javascript.preferences.useAliasesForRenames": true,
   "javascript.suggest.completeFunctionCalls": true,
   "javascript.suggest.enabled": true,
   "javascript.suggest.names": true,
@@ -41,5 +41,5 @@
   "prettier.semi": false,
   "prettier.singleQuote": true,
   "prettier.tabWidth": 2,
-  "prettier.trailingComma": "none"
+  "prettier.trailingComma": "es5"
 }
