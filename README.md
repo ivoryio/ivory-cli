@@ -53,7 +53,7 @@ npm i -g @ivoryio/ivory-cli
 The resulting project uses Typescript whenever possible (from the app code, to infrastructure code and even the tests).
 For best results we recommend all new code to be written in Typescript as well.
 
-# Folder structure
+### Folder structure
 ```
 root
    ├─ amplify          - amplify resources, mostly generated files
@@ -78,7 +78,7 @@ root
       └─ setupTests.ts    - setup of jest-dom tests
 ```
 
-# Testing
+### Testing
 
 The E2E tests are made using [cypress](https://www.cypress.io/) and all tests are in the **cypress** folder from root directory, which has the following structure:
  - **fixtures** - the folder with fixtures which can be used in any test suite. All fixtures are define using **.json** files which contains relevant mock data which is used in E2E tests. We recommend storage of mock data into fixtures which will represent single source of truth, this way we avoid any typo from tests.
